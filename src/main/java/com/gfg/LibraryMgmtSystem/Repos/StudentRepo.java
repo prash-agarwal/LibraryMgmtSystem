@@ -17,7 +17,6 @@ public interface StudentRepo extends JpaRepository<Student, Integer>{
 //}  
 //here T represents the entity type and ID represents the type of the entity's primary key
 
-
 //if we inherit the implementation of JPA directly that is SimpleJpaRepository class,
 //then also it works fine.
 
@@ -27,3 +26,6 @@ public interface StudentRepo extends JpaRepository<Student, Integer>{
 //		super(domainClass, entityManager);
 //		// TODO Auto-generated constructor stub
 //	}
+//In general we can't create object or bean of abstract class. In above when abstract class 
+//extends SimpleJpaRepository, it's the bean of SimpleJpaRepository that gets created, not of 
+//the StudentRepo Class.

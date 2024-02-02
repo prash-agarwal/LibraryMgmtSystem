@@ -30,5 +30,4 @@ public class BookController {
     public Book getBookById(@PathVariable("bookId") int bookId){
         return bookService.getBookById(bookId);
     }
-	
 }

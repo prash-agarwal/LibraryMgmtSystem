@@ -32,12 +32,9 @@ public class Author {
 	//when we are having (Many) at Right, then we will use List 
 	//As one Author can have many books so creating List of Books.
 	
-	
-	
 	@CreationTimestamp    
 	private Date createdOn; 
 	
 	@UpdateTimestamp
 	private Date updatedOn;
-	
 }

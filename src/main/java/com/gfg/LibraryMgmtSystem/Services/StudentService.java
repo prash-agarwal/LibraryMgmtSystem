@@ -28,11 +28,13 @@ public class StudentService {
 //to an object of a class that implements the interface. Here's an example:
 	
 	public void createStudent(Student student) {
-		studentRepo.save(student);
+		studentRepo.save(student);  //this method will save the student details in student table
+		//as a Record.
 	}
 
 	public Student getStudentById(int studentId) {
 		// TODO Auto-generated method stub
-		return studentRepo.findById(studentId).orElse(null);
+		return studentRepo.findById(studentId).orElse(null);  //this method will enable us to 
+		//find the student details by passing the Id.
 	} 
 }
