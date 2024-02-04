@@ -59,6 +59,11 @@ public class Book {
 	
 	@UpdateTimestamp		//This will create a timestamp when a record gets updated.	
 	private Date updatedOn;
+
+	public Object getMyAuthor() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 //	if we are having 2 sql tables namely book and author, 
