@@ -1,5 +1,5 @@
 package com.gfg.LibraryMgmtSystem.Services;
-
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,9 +10,9 @@ import lombok.Builder;
 import lombok.Setter;
 
 @Service
-@Builder
+//@Builder
 @Setter
-public class StudentService {
+public class StudentService {		
 
 	@Autowired
 	StudentRepo studentRepo;//Injecting Interface
@@ -28,6 +28,8 @@ public class StudentService {
 //to an object of a class that implements the interface. Here's an example:
 	
 	public void createStudent(Student student) {
+		System.out.println("Inside Create Student");
+		System.out.println(student.getEmail());
 		studentRepo.save(student);  //this method will save the student details in student table
 		//as a Record.
 	}
@@ -36,5 +38,10 @@ public class StudentService {
 		// TODO Auto-generated method stub
 		return studentRepo.findById(studentId).orElse(null);  //this method will enable us to 
 		//find the student details by passing the Id.
+	}
+
+	public List<Student> getStudents() {
+		// TODO Auto-generated method stub
+		return studentRepo.findAll();
 	} 		
 }

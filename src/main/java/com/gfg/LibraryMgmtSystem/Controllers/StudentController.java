@@ -1,5 +1,7 @@
 package com.gfg.LibraryMgmtSystem.Controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,22 +19,20 @@ import lombok.Setter;
 
 @RestController
 @RequestMapping("/student")
-@Builder
-@Setter
 public class StudentController {
 
 	@Autowired
 	StudentService sr; 
 	
 	@PostMapping("/createStudent")
-	public void createStudent(@Valid @RequestBody Student student) {
-		sr.createStudent(student);
+	public void createStudent(@RequestBody Student student) {
+		sr.createStudent(student);	
 	} //some more validation Annotations : @Positive , @NotBlank
 	
-//	@PostMapping("/createStudent")
-//	public void createStudent(@Valid @RequestBody StudentCreateRequest studentCreateRequest) {
-//		sr.createStudent(studentCreateRequest.to());
-//	} 
+	@PostMapping("/student/all")	 
+	public List<Student> getStudents() {
+		return sr.getStudents();
+	} 
 	
 	@PostMapping("/{studentId}")
 	public Student getStudent(@PathVariable("studentId") int studentId) {

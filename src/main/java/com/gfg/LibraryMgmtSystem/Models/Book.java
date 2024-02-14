@@ -3,6 +3,9 @@ import java.util.Date;
 import java.util.List;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -16,7 +19,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table
-public class Book {
+public class Book {					
 	
 	
 	//Unidirectional - Having only the foreign key attribute in the current class.
@@ -24,6 +27,30 @@ public class Book {
 	//back-reference in the other class.
 	//Assumption - One Book will have only one Author.
 	
+	public Genre getGenre() {
+		return genre;
+	}
+
+	public void setGenre(Genre genre) {
+		this.genre = genre;
+	}
+
+	public Date getCreatedOn() {
+		return createdOn;
+	}
+
+	public void setCreatedOn(Date createdOn) {
+		this.createdOn = createdOn;
+	}
+
+	public Date getUpdatedOn() {
+		return updatedOn;
+	}
+
+	public void setUpdatedOn(Date updatedOn) {
+		this.updatedOn = updatedOn;
+	}
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO) //In AUTO option Hibernate will take care of it. 
 	private int id;   //Int
@@ -34,6 +61,7 @@ public class Book {
 	@ManyToOne     //Left part of annotation is the CurrentClass and Right Part is Object. 
 	@JoinColumn    //this will allow to take id(Primary Key in Author) as column from class 
 	//Author as foreign key in Book Table.
+	@JsonIgnoreProperties(value = "bookList")
 	private Author author;
 	
 	//@Enumerated(value=EnumType.ORDINAL)  //Value will be stored as Number,
@@ -42,6 +70,7 @@ public class Book {
 	
 	@ManyToOne 
 	@JoinColumn     //referring to studentId as Foreign Key in Student Class
+//	@JsonIgnoreProperties(value = "bookList")
 	private Student student;
 	
 	//oneToone
@@ -50,6 +79,7 @@ public class Book {
 	//manyTomany
 	
 	@OneToMany(mappedBy="book")  //using BackReferencing as we wont be referrinig foreign key here
+	//@JsonIgnoreProperties(value = "book")
 	private List<Transaction> transaction;//when we are having (Many) at Right, then we will use List 
 	
 	//As one Book can have many transactions so creating List of transaction.
@@ -60,11 +90,54 @@ public class Book {
 	@UpdateTimestamp		//This will create a timestamp when a record gets updated.	
 	private Date updatedOn;
 
-	public Object getMyAuthor() {
-		// TODO Auto-generated method stub
-		return null;
+	public int getId() {
+		return id;
 	}
-	
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Author getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(Author author) {
+		this.author = author;
+	}
+
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+
+	public List<Transaction> getTransaction() {
+		return transaction;
+	}
+
+	public void setTransaction(List<Transaction> transaction) {
+		this.transaction = transaction;
+	}
+//API for above
+//	{
+//	    "name":"Wings of AI",
+//	    "genre":"SOCIAL_STUDIES",
+//	    "author":{
+//	    "authName":"APJA Kalam",
+//	    "email":"amit@gmail.com"
+//	    }
+//	}
 
 //	if we are having 2 sql tables namely book and author, 
 //	then which table should have the foreign key referencing to other table and why??
