@@ -41,7 +41,7 @@ public class TransactionService {
 	public String issueBook(int bookId, int studentId) throws Exception {
 
 		//1st method - issue book
-		//1. find the book is present or available or not 
+		//1. find the book is available or not. 
 		//2. student is present or not 
 		//3. Student book limit or max book to be issued 
 		//4. create a txn with pending status

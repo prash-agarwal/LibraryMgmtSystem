@@ -20,7 +20,7 @@ public interface TransactionRepo extends JpaRepository<Transaction, Integer>{
 		
 	//	List<Transaction>  findByStudentOrderById(Student student);// order by on trasnction id primary key
 	
-	//Q. find the lastest  transaction with student book and  trasnaction status should be TRANSCTION TYPE ISSUE
+	//Q. find the latest  transaction with student book and  trasnaction status should be TRANSCTION TYPE ISSUE
 	
 	List<Transaction> findByStudentAndBookAndTransactionTypeOrderByIdDesc(Student student, Book book, TransactionType transactionType);
 }
