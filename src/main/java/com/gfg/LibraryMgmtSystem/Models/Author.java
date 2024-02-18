@@ -67,7 +67,10 @@ public class Author {
 	//class, we won't get proper response.
 	//Ryt now it is for book class only which is referring object of 'author' with @ManyToOne
 	//Relationship.
-	@JsonIgnoreProperties(value = {"author", "createdOn", "updatedOn"})
+	//@JsonIgnoreProperties(value = {"author", "createdOn", "updatedOn"})
+	
+	//We have put @JsonIgnoreProperties on author object in Book class, so we can skip
+	//@JsonIgnoreProperties putting here.
 	private List<Book> bookList; //Here booklist won't be present as column in Author Table.
 	//when we are having (Many) at Right, then we will use List 
 	//As one Author can have many books so creating List of Books.

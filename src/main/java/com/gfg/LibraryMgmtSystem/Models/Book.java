@@ -63,6 +63,8 @@ public class Book {
 	//Author as foreign key in Book Table.
 	@JsonIgnoreProperties(value = "bookList")
 	private Author author;
+	//By Ignoring bookList above, we don't need to put @JsonIgnoreProperties on bookList in
+	//Author class.Even if we put, the result will be same.
 	
 	//@Enumerated(value=EnumType.ORDINAL)  //Value will be stored as Number,
 	@Enumerated(value=EnumType.STRING)  //if we select STRING, value will be stored as string 

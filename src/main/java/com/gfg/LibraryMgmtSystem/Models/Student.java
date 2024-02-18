@@ -112,5 +112,4 @@ public class Student {
 	
 	@UpdateTimestamp
 	private Date updatedOn;
-	
 }
