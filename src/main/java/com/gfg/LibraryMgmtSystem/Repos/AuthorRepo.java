@@ -7,6 +7,8 @@ import com.gfg.LibraryMgmtSystem.Models.Author;
 
 public interface AuthorRepo extends JpaRepository<Author,Integer> {
 	
+	//SimpleJpaRepository is the class which provides implementation of JpaRepository.
+	
 	/** Custom queries
      * 1. JPQL - Java persistence query language (format which executes query considering java classes / objects)
      * always uses reference to access the value in object.
