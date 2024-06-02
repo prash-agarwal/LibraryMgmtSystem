@@ -16,4 +16,8 @@ public class Maven {
 //added after mvn install command is run.
 //version is taken from the extended path version as above:
 //C:\Users\DELL\.m2\repository\com\example\EmployeeMgmtSystem\0.0.1-SNAPSHOT
+	
+	//mvn clean install
+	//When we run the command mvn install, mvn clean don't get run..So we can specify
+	//clean also while we mvn install.
 }
